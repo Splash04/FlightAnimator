@@ -141,6 +141,8 @@ internal extension UIView {
                 }
             case .charType:
                 print("WARNING Unknown Animatable Value Configured")
+            @unknown default:
+                print("WARNING Unknown Animatable Value Configured")
             }
         }
     
@@ -151,7 +153,7 @@ internal extension UIView {
 extension Array where Element : Equatable {
     
     mutating func fa_removeObject(_ object : Iterator.Element) {
-        if let index = index(of: object) {
+        if let index = firstIndex(of: object) {
             remove(at: index)
         }
     }

@@ -538,7 +538,7 @@ extension ConfigurationView : UICollectionViewDelegate, UICollectionViewDataSour
             cell.delegate = cellDelegate
             cell.propertyConfigType = PropertyConfigType(rawValue : (indexPath as NSIndexPath).row)!
             cell.primarySwitch.isOn = interactionDelegate!.currentPrimaryFlagValue((indexPath as NSIndexPath).row)
-            cell.pickerView.selectRow(functions.index(of: interactionDelegate!.currentEAsingFuntion((indexPath as NSIndexPath).row))!, inComponent: 0, animated: true)
+            cell.pickerView.selectRow(functions.firstIndex(of: interactionDelegate!.currentEAsingFuntion((indexPath as NSIndexPath).row))!, inComponent: 0, animated: true)
             
             return cell
         }

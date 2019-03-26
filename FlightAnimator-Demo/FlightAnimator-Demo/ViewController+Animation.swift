@@ -39,7 +39,7 @@ struct AnimationConfiguration {
     var enableSecondaryView  : Bool = false
     
     static func titleForFunction(_ function : FAEasing) -> String {
-        return functionTypes[functions.index(of: function)!]
+        return functionTypes[functions.firstIndex(of: function)!]
     }
 }
 
