@@ -205,8 +205,8 @@ open class FABasicAnimation : CAKeyframeAnimation
     {
         CALayer.swizzleAddAnimation()
         
-        calculationMode = kCAAnimationLinear
-        fillMode = kCAFillModeForwards
+        calculationMode = CAAnimationCalculationMode.linear
+        fillMode = CAMediaTimingFillMode.forwards
         
         isRemovedOnCompletion = true
         values = [AnyObject]()
@@ -266,18 +266,20 @@ open class FABasicAnimation : CAKeyframeAnimation
         }
         
         print("timingFunction has no effect, converting to 'easingFunction' property\n")
-        
-        switch mediaTiming.value(forKey: "name") as! String
+
+        let timingFunctionName = mediaTiming.value(forKey: "name") as! String
+        let timingFunction = CAMediaTimingFunctionName(rawValue: timingFunctionName)
+        switch timingFunction
         {
-        case kCAMediaTimingFunctionEaseIn:
+        case .easeIn:
             
             return .inCubic
         
-        case kCAMediaTimingFunctionEaseOut:
+        case .easeOut:
         
             return .outCubic
         
-        case kCAMediaTimingFunctionEaseInEaseOut:
+        case .easeInEaseOut:
         
             return .inOutCubic
         
